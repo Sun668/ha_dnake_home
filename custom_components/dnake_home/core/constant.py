@@ -6,7 +6,7 @@ MANUFACTURER = "Dnake"
 
 # 强制使用此 IP 连接网关，不填则使用配置中的 gateway_ip
 # 例如: "192.168.1.100"
-FORCE_GATEWAY_IP = None
+FORCE_GATEWAY_IP = "192.168.1.152"
 
 
 class Action(Enum):
