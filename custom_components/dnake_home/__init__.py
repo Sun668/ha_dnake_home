@@ -6,6 +6,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.event import async_track_time_interval
 
 from .core.assistant import assistant
+from .core.constant import FORCE_GATEWAY_IP
 from .cover import load_covers, update_covers_state
 from .light import load_lights, update_lights_state
 from .climate import load_climates, update_climates_state
@@ -16,7 +17,7 @@ PLATFORMS = [Platform.LIGHT, Platform.COVER, Platform.CLIMATE]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
-    gateway_ip = entry.data["gateway_ip"]
+    gateway_ip = FORCE_GATEWAY_IP or entry.data["gateway_ip"]
     auth_username = entry.data["auth_username"]
     auth_password = entry.data["auth_password"]
     assistant.bind_auth_info(gateway_ip, auth_username, auth_password)
